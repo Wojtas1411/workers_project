@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/workers_project.dir/main.cpp.o CMakeFiles/workers_project.dir/worker.cpp.o CMakeFiles/workers_project.dir/terminal.cpp.o  -o workers_project 

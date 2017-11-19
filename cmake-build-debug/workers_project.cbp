@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="workers_project"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="workers_project">
+				<Option output="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/workers_project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/../../../../include/c++/7"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/../../../../include/c++/7/x86_64-redhat-linux"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/../../../../include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 workers_project"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="workers_project/fast">
+				<Option output="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/workers_project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/../../../../include/c++/7"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/../../../../include/c++/7/x86_64-redhat-linux"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/../../../../include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 workers_project/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/wojtek/Dokumenty/PO/workers_project/main.cpp">
+			<Option target="workers_project"/>
+		</Unit>
+		<Unit filename="/home/wojtek/Dokumenty/PO/workers_project/terminal.cpp">
+			<Option target="workers_project"/>
+		</Unit>
+		<Unit filename="/home/wojtek/Dokumenty/PO/workers_project/terminal.h">
+			<Option target="workers_project"/>
+		</Unit>
+		<Unit filename="/home/wojtek/Dokumenty/PO/workers_project/worker.cpp">
+			<Option target="workers_project"/>
+		</Unit>
+		<Unit filename="/home/wojtek/Dokumenty/PO/workers_project/worker.h">
+			<Option target="workers_project"/>
+		</Unit>
+		<Unit filename="/home/wojtek/Dokumenty/PO/workers_project/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

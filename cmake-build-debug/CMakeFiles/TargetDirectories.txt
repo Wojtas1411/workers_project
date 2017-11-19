@@ -1,0 +1,3 @@
+/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/wojtek/Dokumenty/PO/workers_project/cmake-build-debug/CMakeFiles/workers_project.dir

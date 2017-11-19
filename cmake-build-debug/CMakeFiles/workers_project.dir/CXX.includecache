@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wojtek/Dokumenty/PO/workers_project/main.cpp
+iostream
+-
+worker.h
+/home/wojtek/Dokumenty/PO/workers_project/worker.h
+terminal.h
+/home/wojtek/Dokumenty/PO/workers_project/terminal.h
+cstring
+-
+
+/home/wojtek/Dokumenty/PO/workers_project/terminal.cpp
+terminal.h
+/home/wojtek/Dokumenty/PO/workers_project/terminal.h
+
+/home/wojtek/Dokumenty/PO/workers_project/terminal.h
+worker.h
+/home/wojtek/Dokumenty/PO/workers_project/worker.h
+
+/home/wojtek/Dokumenty/PO/workers_project/worker.cpp
+worker.h
+/home/wojtek/Dokumenty/PO/workers_project/worker.h
+
+/home/wojtek/Dokumenty/PO/workers_project/worker.h
+iostream
+-
+
