@@ -9,18 +9,18 @@
 
 
 struct item {
-    item *next = NULL;
-    item *prev = NULL;
-    worker *p = NULL;
+    item *next = nullptr;
+    item *prev = nullptr;
+    worker *p = nullptr;
 };
 
 class working_tree {
 private:
     string name;
-    item *p = NULL;
-    item *current_item = NULL;
-    working_tree *parent[2] = {NULL};
-    working_tree *q[3] = {NULL};
+    item *p = nullptr;
+    item *current_item = nullptr;
+    working_tree *parent[2] = {nullptr};
+    working_tree *q[3] = {nullptr};
 protected:
     void set_name(string tmp);
 public:
@@ -46,7 +46,7 @@ public:
 class terminal {
 private:
     string names[13] = {"Worker", "Leader", "Casual", "Director", "Manager", "Salesman", "Office", "Maintenance", "Accountant", "ITguy"};
-    string command_list[9] = {"cd", "mo", "do", "mdo", "dir", "show", "save", "read", "tree"};
+    //string command_list[9] = {"cd", "mo", "do", "mdo", "dir", "show", "save", "read", "tree"};
     working_tree *current;
     working_tree *tab[13];
 

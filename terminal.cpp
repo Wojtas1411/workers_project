@@ -139,7 +139,7 @@ void working_tree::del_element(string param) {
     current_item->prev = nullptr;
     delete current_item;
     cout<<"xd"<<endl;
-    s = NULL;
+    s = nullptr;
     delete s;
     cout<<"xd"<<endl;
 }
@@ -148,7 +148,7 @@ void working_tree::mod_element(string param) {
 }
 void working_tree::show_element(string param) {
     to_item(param);
-    if(current_item!=NULL)current_item->p->show();
+    if(current_item!= nullptr)current_item->p->show();
     else{
         cout<<"show fatal error"<<endl;
     }
@@ -238,7 +238,7 @@ void terminal::change_directory(string tmp) {
 }
 
 void terminal::main_loop() {
-    while(1){
+    while(true){
         joy_mark();
         string x; getline(cin,x);
         //cout<<x<<endl;
