@@ -44,7 +44,7 @@ void working_tree::to_item(string name) {
                 break;
             }
             s=s->next;
-            if(s->next==NULL){
+            if(s->next==NULL && s->p->get_name_value() == name){
                 current_item = s;
                 czy = true;
             }
@@ -145,6 +145,33 @@ void working_tree::del_element(string param) {
 }
 void working_tree::mod_element(string param) {
     //TODO
+    to_item(param);
+    if(current_item != nullptr){
+        delete current_item->p;
+        if(name == "Director"){
+            current_item->p = new director();
+        }
+        else if(name == "Manager"){
+            current_item->p = new manager();
+        }
+        else if(name == "Salesman"){
+            current_item->p = new salesman();
+        }
+        else if(name == "Accountant"){
+            current_item->p = new accountant();
+        }
+        else if(name == "ITguy"){
+            current_item->p = new IT_guy();
+        }
+        else{
+            cout<<"Invalid parameter";
+        }
+        current_item = nullptr;
+
+    }
+    else{
+        cout<<"mdo fatal error"<<endl;
+    }
 }
 void working_tree::show_element(string param) {
     to_item(param);
@@ -237,20 +264,34 @@ void terminal::change_directory(string tmp) {
     }
 }
 
+void terminal::super_change_directory(string tmp) {
+    bool tester = false;
+    for(int i=0;i<13;i++){
+        if(tab[i]->get_name()==tmp){
+            current = tab[i];
+            tester = true;
+            break;
+        }
+    }
+    if(!tester){
+        cout<<"Directory is not accesible"<<endl;
+    }
+}
+
 void terminal::main_loop() {
     while(true){
         joy_mark();
         string x; getline(cin,x);
-        //cout<<x<<endl;
-        string command = x.substr(0,x.find(" "));
-        //cout<<command<<endl;
-        string parameter = x.substr(x.find(" ")+1,x.length());
-        //cout<<parameter<<endl;
+        string command = x.substr(0,x.find(' '));
+        string parameter = x.substr(x.find(' ')+1,x.length());
         if(command == "exit"){
             break;
         }
         else if(command == "cd"){
             change_directory(parameter);
+        }
+        else if(command == "xd"){
+            super_change_directory(parameter);
         }
         else if(command == "mo"){
             current->add_element(parameter);

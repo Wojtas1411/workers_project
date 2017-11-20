@@ -54,6 +54,7 @@ protected:
     void joy_mark();
     void main_loop();
     void change_directory(string tmp);
+    void super_change_directory(string tmp);
 public:
     terminal();
     ~terminal();
