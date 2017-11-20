@@ -40,6 +40,9 @@ public:
 
     int num_of_elements();
 
+    void add_element2(ifstream& read, string param);
+    void del_all_elements();
+
     string get_name();
     working_tree *get_child(int i);
     working_tree *get_parent(int i);
@@ -70,6 +73,7 @@ protected:
     void tree();
 
     void save(string filename);
+    void read(string filename);
 
 public:
     terminal();

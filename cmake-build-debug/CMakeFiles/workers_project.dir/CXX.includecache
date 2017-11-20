@@ -13,8 +13,6 @@ worker.h
 /home/wojtek/Dokumenty/PO/workers_project/worker.h
 terminal.h
 /home/wojtek/Dokumenty/PO/workers_project/terminal.h
-cstring
--
 
 /home/wojtek/Dokumenty/PO/workers_project/terminal.cpp
 terminal.h
@@ -32,5 +30,7 @@ worker.h
 
 /home/wojtek/Dokumenty/PO/workers_project/worker.h
 iostream
+-
+fstream
 -
 

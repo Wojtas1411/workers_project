@@ -48,6 +48,11 @@ void worker::show() {
 void worker::to_file(ofstream& save) {
     cout<<"Error"<<endl;
 }
+worker::worker(ifstream& read) {
+    getline(read,name);
+    read>>salary;
+    string t;getline(read,t);
+}
 worker::~worker() {}
 
 ///-------Class Leader-------///
@@ -76,6 +81,10 @@ void leader::to_file(ofstream& save) {
 leader::leader(){
     set_office_nuber_console();
 }
+leader::leader(ifstream& read) : worker(read){
+    read>>office_number;
+    string t;getline(read,t);
+}
 leader::~leader() {}
 
 ///-------Class Director-------///
@@ -98,13 +107,16 @@ void director::show() {
     show_car();
 }
 void director::to_file(ofstream& save) {
-    save<<get_name_value()<<" ";
-    save<<get_salary_value()<<" ";
-    save<<get_office_number_value()<<" ";
+    save<<get_name_value()<<endl;
+    save<<get_salary_value()<<endl;
+    save<<get_office_number_value()<<endl;
     save<<get_car_value()<<endl;
 }
 director::director() {
     set_car_console();
+}
+director::director(ifstream& read): leader(read) {
+    getline(read,car);
 }
 director::~director() {
     cout<<"Deleted Director"<<endl;
@@ -131,13 +143,17 @@ void manager::show(){
     show_team_id();
 }
 void manager::to_file(ofstream& save) {
-    save<<get_name_value()<<" ";
-    save<<get_salary_value()<<" ";
-    save<<get_office_number_value()<<" ";
+    save<<get_name_value()<<endl;
+    save<<get_salary_value()<<endl;
+    save<<get_office_number_value()<<endl;
     save<<get_team_id_value()<<endl;
 }
 manager::manager() {
     set_team_id_console();
+}
+manager::manager(ifstream& read):leader(read) {
+    read>>team_id;
+    string t;getline(read,t);
 }
 manager::~manager() {
     cout<<"Deleted Manager"<<endl;
@@ -168,6 +184,10 @@ void casual::to_file(ofstream& save) {
 casual::casual() {
     set_experiance_console();
 }
+casual::casual(ifstream &read):worker(read) {
+    read>>experiance;
+    string t;getline(read,t);
+}
 casual::~casual() {}
 
 ///-------Salesman-------///
@@ -191,13 +211,17 @@ void salesman::show(){
     show_region_id();
 }
 void salesman::to_file(ofstream& save) {
-    save<<get_name_value()<<" ";
-    save<<get_salary_value()<<" ";
-    save<<get_experiance_value()<<" ";
+    save<<get_name_value()<<endl;
+    save<<get_salary_value()<<endl;
+    save<<get_experiance_value()<<endl;
     save<<get_region_id_value()<<endl;
 }
 salesman::salesman() {
     set_region_id_console();
+}
+salesman::salesman(ifstream &read):casual(read) {
+    read>>region_id;
+    string t;getline(read,t);
 }
 salesman::~salesman() {
     cout<<"Deleted Salesman"<<endl;
@@ -229,6 +253,10 @@ void office_worker::to_file(ofstream& save) {
 office_worker::office_worker() {
     set_box_id_console();
 }
+office_worker::office_worker(ifstream &read) :casual(read){
+    read>>box_id;
+    string t;getline(read,t);
+}
 office_worker::~office_worker() {}
 
 ///-------Class Maintenance Worker-------///
@@ -256,6 +284,9 @@ void maintenance_worker::to_file(ofstream& save) {
 maintenance_worker::maintenance_worker() {
     set_tool_console();
 }
+maintenance_worker::maintenance_worker(ifstream &read):casual(read){
+    getline(read,tool);
+}
 maintenance_worker::~maintenance_worker() {}
 
 ///-------Class Accountant-------///
@@ -280,14 +311,18 @@ void accountant::show() {
     show_acces_level();
 }
 void accountant::to_file(ofstream& save) {
-    save<<get_name_value()<<" ";
-    save<<get_salary_value()<<" ";
-    save<<get_experiance_value()<<" ";
-    save<<get_box_id_value()<<" ";
+    save<<get_name_value()<<endl;
+    save<<get_salary_value()<<endl;
+    save<<get_experiance_value()<<endl;
+    save<<get_box_id_value()<<endl;
     save<<get_acces_level_value()<<endl;
 }
 accountant::accountant() {
     set_acces_level_console();
+}
+accountant::accountant(ifstream& read) : office_worker(read), casual(read){
+    read>>acces_level;
+    string t;getline(read,t);
 }
 accountant::~accountant() {
     cout<<"Deleted Accountant"<<endl;
@@ -316,15 +351,18 @@ void IT_guy::show() {
     show_computer();
 }
 void IT_guy::to_file(ofstream& save) {
-    save<<get_name_value()<<" ";
-    save<<get_salary_value()<<" ";
-    save<<get_experiance_value()<<" ";
-    save<<get_box_id_value()<<" ";
-    save<<get_tool_value()<<" ";
+    save<<get_name_value()<<endl;
+    save<<get_salary_value()<<endl;
+    save<<get_experiance_value()<<endl;
+    save<<get_tool_value()<<endl;
+    save<<get_box_id_value()<<endl;
     save<<get_computer_value()<<endl;
 }
 IT_guy::IT_guy() {
     set_computer_console();
+}
+IT_guy::IT_guy(ifstream &read) :maintenance_worker(read), office_worker(read), casual(read){
+    getline(read,computer);
 }
 IT_guy::~IT_guy() {
     cout<<"Deleted IT guy"<<endl;

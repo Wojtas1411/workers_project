@@ -215,6 +215,63 @@ int working_tree::num_of_elements() {
     }
 }
 
+void working_tree::add_element2(ifstream &read, string param) {
+    if(p == nullptr){
+        p = new item;
+        current_item = p;
+        //cout<<"one"<<endl;
+    }
+    else if(p!= nullptr && p->next == nullptr){
+        p->next = new item;
+        current_item = p->next;
+        current_item->prev = p;
+        //cout<<"two"<<endl;
+    }
+    else{
+        item *s = p;
+        while(s->next != nullptr){
+            s = s->next;
+        }
+        s->next = new item;
+        current_item = s->next;
+        current_item->prev = s;
+        s = nullptr;
+        delete s;
+    }
+    if(param == "Director" || (param.empty() && name == "Director")){
+        current_item->p = new director(read);
+    }
+    else if(param == "Manager" || (param.empty() && name == "Manager")){
+        current_item->p = new manager(read);
+    }
+    else if(param == "Salesman" || (param.empty() && name == "Salesman")){
+        current_item->p = new salesman(read);
+    }
+    else if(param == "Accountant" || (param.empty() && name == "Accountant")){
+        current_item->p = new accountant(read);
+    }
+    else if(param == "ITguy" || (param.empty() && name == "ITguy")){
+        current_item->p = new IT_guy(read);
+    }
+    else{
+        cout<<"Invalid parameter";
+    }
+    //cout<<"Making finished"<<endl;
+}
+void working_tree::del_all_elements() {
+    item *s = p;
+    while(s != nullptr){
+        delete s->p;
+        s->prev = nullptr;
+        s = s->next;
+        if(s != nullptr)delete s->prev;
+    }
+    s = nullptr;
+    delete s;
+    p = nullptr;
+    //if(p != nullptr)cout<<"Something went terribly wrong here!"<<endl;
+}
+
 item *working_tree::get_p() {
     return p;
 }
@@ -376,7 +433,6 @@ void terminal::tree() {
 }
 
 void terminal::save(string filename) {
-    //TODO
     if(filename.empty()){
         filename = "default_save.txt";
     }
@@ -398,6 +454,49 @@ void terminal::save(string filename) {
         }
     }
     save.close();
+}
+
+void terminal::read(string filename) {
+    if(filename.empty()){
+        filename = "default_save.txt";
+    }
+    if(filename.find(".txt") == -1){
+        filename+=".txt";
+    }
+    ifstream read;
+    read.open(filename.c_str());
+    if(!read){
+        cout<<"Wrong filename"<<endl;
+        read.close();
+        read.clear(read.rdstate()&~ios::failbit);
+    }
+    else{
+        string tmp;
+        int a;
+        string buff;
+        while(!read.eof()){
+            read>>tmp;
+            read>>a;
+            getline(read,buff);
+            cout<<tmp<<" "<<a<<endl;
+            cout<<buff<<endl;
+
+            for(int i=0;i<10;i++){
+                if(tab[i]->get_name()==tmp){
+                    if(tab[i]->get_p() != nullptr){
+                        //cout<<"p is not empty"<<endl;
+                        tab[i]->del_all_elements();
+                    }
+                    for(int j=0;j<a;j++){
+                        tab[i]->add_element2(read,tmp);
+                    }
+                    tab[i]->show_list(0);
+                    break;
+                }
+            }
+            if(tmp == "ITguy")break;
+        }
+    }
 }
 
 void terminal::main_loop() {
@@ -436,7 +535,7 @@ void terminal::main_loop() {
             save(parameter);
         }
         else if(command == "read"){
-            //TODO
+            read(parameter);
         }
         else if(command == "tree"){
             tree();

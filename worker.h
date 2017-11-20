@@ -22,6 +22,7 @@ public:
     virtual void get_salary_console();
     int get_salary_value();
     worker();
+    worker(ifstream& read);
     virtual void show();
     virtual void to_file(ofstream& save);
     virtual ~worker();
@@ -38,6 +39,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     leader();
+    leader(ifstream& read);
     virtual ~leader();
 };
 
@@ -52,6 +54,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     director();
+    director(ifstream& read);
     virtual ~director();
 };
 
@@ -66,6 +69,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     manager();
+    manager(ifstream& read);
     virtual ~manager();
 };
 
@@ -80,6 +84,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     casual();
+    casual(ifstream& read);
     virtual ~casual();
 };
 
@@ -94,6 +99,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     salesman();
+    salesman(ifstream& read);
     virtual ~salesman();
 };
 
@@ -108,6 +114,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     office_worker();
+    office_worker(ifstream& read);
     virtual ~office_worker();
 };
 
@@ -122,10 +129,11 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     maintenance_worker();
+    maintenance_worker(ifstream& read);
     virtual ~maintenance_worker();
 };
 
-class accountant: public office_worker {
+class accountant: virtual public office_worker {
 private:
     int acces_level;
 protected:
@@ -136,6 +144,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     accountant();
+    accountant(ifstream& read);
     virtual ~accountant();
 
 };
@@ -151,6 +160,7 @@ public:
     virtual void show();
     virtual void to_file(ofstream& save);
     IT_guy();
+    IT_guy(ifstream& read);
     virtual ~IT_guy();
 };
 
