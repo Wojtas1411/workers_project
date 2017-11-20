@@ -3,7 +3,6 @@
 //
 
 #include "terminal.h"
-#include <stack>
 
 ///--------Working Tree--------///
 void working_tree::set_name(string tmp) {
@@ -201,6 +200,21 @@ void working_tree::show_list(int depth) {
     }
 }
 
+int working_tree::num_of_elements() {
+    if(p == nullptr)return 0;
+    else{
+        item *s = p;
+        int count = 0;
+        while(s != nullptr){
+            count++;
+            s=s->next;
+        }
+        s = nullptr;
+        delete s;
+        return count;
+    }
+}
+
 working_tree::working_tree(string name) {
     set_name(name);
 }
@@ -282,7 +296,7 @@ void terminal::change_directory(string tmp) {
 
 void terminal::super_change_directory(string tmp) {
     bool tester = false;
-    for(int i=0;i<13;i++){
+    for(int i=0;i<10;i++){
         if(tab[i]->get_name()==tmp){
             current = tab[i];
             tester = true;
@@ -296,13 +310,13 @@ void terminal::super_change_directory(string tmp) {
 
 
 void terminal::seen_to_false() {
-    for(int i=0;i<13;i++){
+    for(int i=0;i<10;i++){
         seen[i]=false;
     }
 }
 void terminal::dir_rec(working_tree *tmp) {
     if(tmp->is_leaf()){
-        for(int i=0;i<13;i++){
+        for(int i=0;i<10;i++){
             if(tmp->get_name()==names[i] && !seen[i]){
                 seen[i]=true;
                 cout<<tmp->get_name()<<" :"<<endl;
@@ -357,12 +371,33 @@ void terminal::tree() {
     tree_rec(tab[0],0);
 }
 
+void terminal::save(string filename) {
+    //TODO
+    if(filename == ""){
+        filename = "default_save.txt";
+    }
+    if(filename.find(".txt") == -1){
+        filename+=".txt";
+    }
+    ofstream save;
+    save.open(filename.c_str());
+    for(int i=0;i<10;i++){
+        if(tab[i]->is_leaf()){
+            save<<tab[i]->get_name()<<" "<<tab[i]->num_of_elements()<<endl;
+
+        }
+    }
+    save.close();
+}
+
 void terminal::main_loop() {
     while(true){
         joy_mark();
         string x; getline(cin,x);
         string command = x.substr(0,x.find(' '));
         string parameter = x.substr(x.find(' ')+1,x.length());
+        if(command == parameter)parameter = "";
+
         if(command == "exit"){
             break;
         }
@@ -388,7 +423,7 @@ void terminal::main_loop() {
             current->show_element(parameter);
         }
         else if(command == "save"){
-            //TODO
+            save(parameter);
         }
         else if(command == "read"){
             //TODO
@@ -408,7 +443,7 @@ void terminal::main_loop() {
 }
 
 terminal::terminal() {
-    for(int i=0;i<13;i++){
+    for(int i=0;i<10;i++){
         tab[i] = new working_tree(names[i]);
     }
     current = tab[3];
@@ -432,9 +467,10 @@ terminal::terminal() {
 
 }
 terminal::~terminal() {
-    for(int i=0;i<13;i++){
+    for(int i=0;i<10;i++){
         cout<<"Deleting "<<tab[i]->get_name()<<endl;
         delete tab[i];
     }
+    current = NULL;
     delete current;
 }

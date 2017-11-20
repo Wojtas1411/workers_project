@@ -19,10 +19,10 @@ cstring
 /home/wojtek/Dokumenty/PO/workers_project/terminal.cpp
 terminal.h
 /home/wojtek/Dokumenty/PO/workers_project/terminal.h
-stack
--
 
 /home/wojtek/Dokumenty/PO/workers_project/terminal.h
+fstream
+-
 worker.h
 /home/wojtek/Dokumenty/PO/workers_project/worker.h
 

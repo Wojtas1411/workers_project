@@ -5,6 +5,8 @@
 #ifndef WORKERS_PROJECT_TERMINAL_H
 #define WORKERS_PROJECT_TERMINAL_H
 
+#include <fstream>
+
 #include "worker.h"
 
 
@@ -36,6 +38,8 @@ public:
     void show_element(string param);
     void show_list(int depth);
 
+    int num_of_elements();
+
     string get_name();
     working_tree *get_child(int i);
     working_tree *get_parent(int i);
@@ -46,11 +50,11 @@ public:
 
 class terminal {
 private:
-    string names[13] = {"Worker", "Leader", "Casual", "Director", "Manager", "Salesman", "Office", "Maintenance", "Accountant", "ITguy"};
+    string names[10] = {"Worker", "Leader", "Casual", "Director", "Manager", "Salesman", "Office", "Maintenance", "Accountant", "ITguy"};
     //string command_list[9] = {"cd", "mo", "do", "mdo", "dir", "show", "save", "read", "tree"};
-    bool seen[13] = {false};
+    bool seen[10] = {false};
     working_tree *current;
-    working_tree *tab[13];
+    working_tree *tab[10];
 
     void dir_rec(working_tree* tmp);
     void tree_rec(working_tree* tmp, int depth);
@@ -63,6 +67,8 @@ protected:
     void super_change_directory(string tmp);
     void dir();
     void tree();
+
+    void save(string filename);
 
 public:
     terminal();
