@@ -34,6 +34,7 @@ public:
     void del_element(string param);
     void mod_element(string param);
     void show_element(string param);
+    void show_list(int depth);
 
     string get_name();
     working_tree *get_child(int i);
@@ -47,14 +48,22 @@ class terminal {
 private:
     string names[13] = {"Worker", "Leader", "Casual", "Director", "Manager", "Salesman", "Office", "Maintenance", "Accountant", "ITguy"};
     //string command_list[9] = {"cd", "mo", "do", "mdo", "dir", "show", "save", "read", "tree"};
+    bool seen[13] = {false};
     working_tree *current;
     working_tree *tab[13];
+
+    void dir_rec(working_tree* tmp);
+    void tree_rec(working_tree* tmp, int depth);
+    void seen_to_false();
 
 protected:
     void joy_mark();
     void main_loop();
     void change_directory(string tmp);
     void super_change_directory(string tmp);
+    void dir();
+    void tree();
+
 public:
     terminal();
     ~terminal();

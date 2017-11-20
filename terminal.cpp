@@ -3,6 +3,7 @@
 //
 
 #include "terminal.h"
+#include <stack>
 
 ///--------Working Tree--------///
 void working_tree::set_name(string tmp) {
@@ -11,40 +12,43 @@ void working_tree::set_name(string tmp) {
 string working_tree::get_name() {
     return name;
 }
+
 bool working_tree::is_leaf() {
-    if(q[0] == NULL && q[1] == NULL && q[2] == NULL){
+    if(q[0] == nullptr && q[1] == nullptr && q[2] == nullptr){
         return true;
     }
     else {
         return false;
     }
+
 }
 void working_tree::to_item(string name) {
     bool czy = false;
     item *s = p;
-    current_item = NULL;
-    if(s==NULL){
-        current_item = NULL;
+    current_item = nullptr;
+    if(s== nullptr){
+        current_item = nullptr;
         cout<<"Object with this name doesn't exist"<<endl;
+        czy = true;
     }
-    else if(s->next == NULL && s!=NULL && s->p->get_name_value()==name){
+    else if(s->next == nullptr && s!= nullptr && s->p->get_name_value()==name){
         current_item = s;
         czy = true;
-        cout<<"one"<<endl;
-        cout<<current_item->p->get_name_value()<<endl;
+        //cout<<"one"<<endl;
+        //cout<<current_item->p->get_name_value()<<endl;
     }
     else{
-        while(s->next!=NULL){
+        while(s->next!= nullptr){
             //s=s->next;
             if(s->p->get_name_value() == name){
                 current_item = s;
                 czy = true;
-                cout<<"two"<<endl;
-                cout<<current_item->next->p->get_name_value()<<endl;
+                //cout<<"two"<<endl;
+                //cout<<current_item->next->p->get_name_value()<<endl;
                 break;
             }
             s=s->next;
-            if(s->next==NULL && s->p->get_name_value() == name){
+            if(s->next== nullptr && s->p->get_name_value() == name){
                 current_item = s;
                 czy = true;
             }
@@ -52,19 +56,19 @@ void working_tree::to_item(string name) {
     }
     s = nullptr;
     delete s;
-    if(czy == false){
-        cout<<"Object with this name doesn't exist1"<<endl;
+    if(!czy){
+        cout<<"Object with this name doesn't exist"<<endl;
     }
 }
 
 void working_tree::set_children(working_tree *p, working_tree *s, working_tree *r) {
-    if(p!=NULL)q[0] = p;
-    if(s!=NULL)q[1] = s;
-    if(r!=NULL)q[2] = r;
+    if(p!= nullptr)q[0] = p;
+    if(s!= nullptr)q[1] = s;
+    if(r!= nullptr)q[2] = r;
 }
 void working_tree::set_parent(working_tree *p, working_tree*q) {
-    if(p!=NULL)parent[0] = p;
-    if(q!=NULL)parent[1] = q;
+    if(p!= nullptr)parent[0] = p;
+    if(q!= nullptr)parent[1] = q;
 }
 working_tree *working_tree::get_child(int i) {
     return q[i];
@@ -74,26 +78,26 @@ working_tree *working_tree::get_parent(int i) {
 }
 
 void working_tree::add_element(string param) {
-    if(p == NULL){
+    if(p == nullptr){
         p = new item;
         current_item = p;
-        cout<<"one"<<endl;
+        //cout<<"one"<<endl;
     }
-    else if(p!=NULL && p->next == NULL){
+    else if(p!= nullptr && p->next == nullptr){
         p->next = new item;
         current_item = p->next;
         current_item->prev = p;
-        cout<<"two"<<endl;
+        //cout<<"two"<<endl;
     }
     else{
         item *s = p;
-        while(s->next != NULL){
+        while(s->next != nullptr){
             s = s->next;
         }
         s->next = new item;
         current_item = s->next;
         current_item->prev = s;
-        s = NULL;
+        s = nullptr;
         delete s;
     }
     if(param == "Director"){
@@ -144,7 +148,6 @@ void working_tree::del_element(string param) {
     cout<<"xd"<<endl;
 }
 void working_tree::mod_element(string param) {
-    //TODO
     to_item(param);
     if(current_item != nullptr){
         delete current_item->p;
@@ -180,55 +183,68 @@ void working_tree::show_element(string param) {
         cout<<"show fatal error"<<endl;
     }
 }
+void working_tree::show_list(int depth) {
+    if(is_leaf() && p!= nullptr){
+        item *s = p;
+        while(s!= nullptr){
+            for(int i=0;i<depth;i++)cout<<"  ";
+            cout<<s->p->get_name_value()<<endl;
+            s = s->next;
+        }
+        s = nullptr;
+        delete s;
 
+    }
+    else{
+        for(int i=0;i<depth;i++)cout<<"  ";
+        cout<<"Is not a leaf or empty"<<endl;
+    }
+}
 
 working_tree::working_tree(string name) {
     set_name(name);
 }
 
 working_tree::~working_tree() {
-    if(p== nullptr)current_item = nullptr;
+    current_item = nullptr;
     cout<<"step1"<<endl;
     for(int i=0;i<2;i++){
-        parent[i]=NULL;
+        parent[i]= nullptr;
         delete parent[i];
     }
     cout<<"sted2"<<endl;
     for(int i=0;i<3;i++){
-        q[i] = NULL;
+        q[i] = nullptr;
         delete q[i];
     }
     cout<<"step3"<<endl;
     item *s = p;
     p = nullptr;
-    while (s!=NULL && s->next!=NULL){
+    while (s!= nullptr && s->next!= nullptr){
         s = s->next;
-        cout<<"Deleting "<<s->prev->p->get_name_value()<<endl;
+        //cout<<"Deleting "<<s->prev->p->get_name_value()<<endl;
         delete s->prev->p;
         delete s->prev->prev;
-        current_item = NULL;
+        current_item = nullptr;
     }
-    if(s!=NULL){
+    if(s!= nullptr){
         delete s->p;
         delete s->prev;
-        s=NULL;
+        s= nullptr;
     }
     delete s;
     cout<<"step4"<<endl;
-    //p =NULL;
-    if(p!=NULL){
-        cout<<"xd"<<endl;
+    if(p!= nullptr){
         delete p->p;
-        if(p->next!=NULL)delete p->next;
-        if(p->prev!=NULL)delete p->prev;
+        if(p->next!= nullptr)delete p->next;
+        if(p->prev!= nullptr)delete p->prev;
         delete p;
     }
     cout<<"step5"<<endl;
-    if(current_item!=NULL){
-        cout<<"xd"<<endl;
+    /*if(current_item!= nullptr){
         delete current_item->p;
         delete current_item;
-    }
+    }*/
     delete current_item;
     delete p;
     cout<<"done"<<endl;
@@ -243,15 +259,15 @@ void terminal::change_directory(string tmp) {
     bool tester = false;
 
     for(int i=0;i<2;i++){
-        if(current->get_parent(i) != NULL && current->get_parent(i)->get_name() == tmp){
+        if(current->get_parent(i) != nullptr && current->get_parent(i)->get_name() == tmp){
             current = current->get_parent(i);
             tester = true;
         }
     }
 
-    if(tester == false){
+    if(!tester){
         for(int i=0;i<3;i++){
-            if(current->get_child(i) != NULL && current->get_child(i)->get_name() == tmp){
+            if(current->get_child(i) != nullptr && current->get_child(i)->get_name() == tmp){
                 current = current->get_child(i);
                 tester = true;
                 break;
@@ -259,7 +275,7 @@ void terminal::change_directory(string tmp) {
         }
     }
 
-    if(tester == false){
+    if(!tester){
         cout<<"Directory is not accesible"<<endl;
     }
 }
@@ -276,6 +292,69 @@ void terminal::super_change_directory(string tmp) {
     if(!tester){
         cout<<"Directory is not accesible"<<endl;
     }
+}
+
+
+void terminal::seen_to_false() {
+    for(int i=0;i<13;i++){
+        seen[i]=false;
+    }
+}
+void terminal::dir_rec(working_tree *tmp) {
+    if(tmp->is_leaf()){
+        for(int i=0;i<13;i++){
+            if(tmp->get_name()==names[i] && !seen[i]){
+                seen[i]=true;
+                cout<<tmp->get_name()<<" :"<<endl;
+                tmp->show_list(0);
+                break;
+            }
+        }
+
+    }
+    else{
+        for(int i=0;i<3;i++){
+            if(tmp->get_child(i) != nullptr){
+                dir_rec(tmp->get_child(i));
+            }
+        }
+    }
+    tmp = nullptr;
+    delete tmp;
+}
+void terminal::dir() {
+    if(current->is_leaf()){
+        cout<<current->get_name()<<" :"<<endl;
+        current->show_list(1);
+    }
+    else{
+        for(int i=0;i<3;i++){
+            if(current->get_child(i) != nullptr){
+                dir_rec(current->get_child(i));
+            }
+        }
+    }
+    seen_to_false();
+}
+void terminal::tree_rec(working_tree *tmp, int depth) {
+    for(int i=0;i<depth;i++){
+        cout<<"  ";
+    }
+    cout<<tmp->get_name()<<endl;
+    if(!tmp->is_leaf()){
+        depth++;
+        for(int i=0;i<3;i++){
+            if(tmp->get_child(i) != nullptr){
+                tree_rec(tmp->get_child(i),depth);
+            }
+        }
+    }
+    else{
+        tmp->show_list(depth + 1);
+    }
+}
+void terminal::tree() {
+    tree_rec(tab[0],0);
 }
 
 void terminal::main_loop() {
@@ -303,7 +382,7 @@ void terminal::main_loop() {
             current->mod_element(parameter);
         }
         else if(command == "dir"){
-            //TODO
+            dir();
         }
         else if(command == "show"){
             current->show_element(parameter);
@@ -315,7 +394,10 @@ void terminal::main_loop() {
             //TODO
         }
         else if(command == "tree"){
-            //TODO
+            tree();
+        }
+        else if(command == "showL"){
+            current->show_list(0);
         }
         else{
             cout<<"Invalid command"<<endl;
@@ -327,7 +409,6 @@ void terminal::main_loop() {
 
 terminal::terminal() {
     for(int i=0;i<13;i++){
-        //cout<<names[i]<<endl;
         tab[i] = new working_tree(names[i]);
     }
     current = tab[3];
