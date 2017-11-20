@@ -45,6 +45,9 @@ void worker::show() {
     get_name_console();
     get_salary_console();
 }
+void worker::to_file(ofstream& save) {
+    cout<<"Error"<<endl;
+}
 worker::~worker() {}
 
 ///-------Class Leader-------///
@@ -58,10 +61,16 @@ void leader::set_office_nuber_console() {
 void leader::show_office_number() {
     cout<<"Office number: "<<office_number<<endl;
 }
+int leader::get_office_number_value() {
+    return office_number;
+}
 void leader::show(){
     get_name_console();
     get_salary_console();
     show_office_number();
+}
+void leader::to_file(ofstream& save) {
+    cout<<"Error"<<endl;
 }
 
 leader::leader(){
@@ -79,11 +88,20 @@ void director::set_car_console() {
 void director::show_car() {
     cout<<"Director's car is: "<<car<<endl;
 }
+string director::get_car_value() {
+    return car;
+}
 void director::show() {
     get_name_console();
     get_salary_console();
     show_office_number();
     show_car();
+}
+void director::to_file(ofstream& save) {
+    save<<get_name_value()<<" ";
+    save<<get_salary_value()<<" ";
+    save<<get_office_number_value()<<" ";
+    save<<get_car_value()<<endl;
 }
 director::director() {
     set_car_console();
@@ -103,11 +121,20 @@ void manager::set_team_id_console() {
 void manager::show_team_id() {
     cout<<"Team ID is: "<<team_id<<endl;
 }
+int manager::get_team_id_value() {
+    return team_id;
+}
 void manager::show(){
     get_name_console();
     get_salary_console();
     show_office_number();
     show_team_id();
+}
+void manager::to_file(ofstream& save) {
+    save<<get_name_value()<<" ";
+    save<<get_salary_value()<<" ";
+    save<<get_office_number_value()<<" ";
+    save<<get_team_id_value()<<endl;
 }
 manager::manager() {
     set_team_id_console();
@@ -127,10 +154,16 @@ void casual::set_experiance_console() {
 void casual::show_experiance() {
     cout<<"Worker's experiance: "<<experiance<<" years"<<endl;
 }
+int casual::get_experiance_value() {
+    return experiance;
+}
 void casual::show() {
     get_name_console();
     get_salary_console();
     show_experiance();
+}
+void casual::to_file(ofstream& save) {
+    cout<<"Error"<<endl;
 }
 casual::casual() {
     set_experiance_console();
@@ -148,11 +181,20 @@ void salesman::set_region_id_console() {
 void salesman::show_region_id() {
     cout<<"Region ID: "<<region_id<<endl;
 }
+int salesman::get_region_id_value() {
+    return region_id;
+}
 void salesman::show(){
     get_name_console();
     get_salary_console();
     show_experiance();
     show_region_id();
+}
+void salesman::to_file(ofstream& save) {
+    save<<get_name_value()<<" ";
+    save<<get_salary_value()<<" ";
+    save<<get_experiance_value()<<" ";
+    save<<get_region_id_value()<<endl;
 }
 salesman::salesman() {
     set_region_id_console();
@@ -172,11 +214,17 @@ void office_worker::set_box_id_console() {
 void office_worker::show_box_id() {
     cout<<"Workbox ID is: "<<box_id<<endl;
 }
+int office_worker::get_box_id_value() {
+    return box_id;
+}
 void office_worker::show() {
     get_name_console();
     get_salary_console();
     show_experiance();
     show_box_id();
+}
+void office_worker::to_file(ofstream& save) {
+    cout<<"Error"<<endl;
 }
 office_worker::office_worker() {
     set_box_id_console();
@@ -193,11 +241,17 @@ void maintenance_worker::set_tool_console() {
 void maintenance_worker::show_tool() {
     cout<<"Tool is: "<<tool<<endl;
 }
+string maintenance_worker::get_tool_value() {
+    return tool;
+}
 void maintenance_worker::show() {
     get_name_console();
     get_salary_console();
     show_experiance();
     show_tool();
+}
+void maintenance_worker::to_file(ofstream& save) {
+    cout<<"Error"<<endl;
 }
 maintenance_worker::maintenance_worker() {
     set_tool_console();
@@ -215,12 +269,22 @@ void accountant::set_acces_level_console() {
 void accountant::show_acces_level() {
     cout<<"Acces level is: "<<acces_level<<endl;
 }
+int accountant::get_acces_level_value() {
+    return acces_level;
+}
 void accountant::show() {
     get_name_console();
     get_salary_console();
     show_experiance();
     show_box_id();
     show_acces_level();
+}
+void accountant::to_file(ofstream& save) {
+    save<<get_name_value()<<" ";
+    save<<get_salary_value()<<" ";
+    save<<get_experiance_value()<<" ";
+    save<<get_box_id_value()<<" ";
+    save<<get_acces_level_value()<<endl;
 }
 accountant::accountant() {
     set_acces_level_console();
@@ -240,6 +304,9 @@ void IT_guy::set_computer_console() {
 void IT_guy::show_computer() {
     cout<<"IT Guy's PC is: "<<computer<<endl;
 }
+string IT_guy::get_computer_value() {
+    return computer;
+}
 void IT_guy::show() {
     get_name_console();
     get_salary_console();
@@ -247,6 +314,14 @@ void IT_guy::show() {
     show_box_id();
     show_tool();
     show_computer();
+}
+void IT_guy::to_file(ofstream& save) {
+    save<<get_name_value()<<" ";
+    save<<get_salary_value()<<" ";
+    save<<get_experiance_value()<<" ";
+    save<<get_box_id_value()<<" ";
+    save<<get_tool_value()<<" ";
+    save<<get_computer_value()<<endl;
 }
 IT_guy::IT_guy() {
     set_computer_console();

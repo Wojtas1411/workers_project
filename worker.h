@@ -1,6 +1,7 @@
 #ifndef WORKERS_PROJECT_WORKER_H
 #define WORKERS_PROJECT_WORKER_H
 #include<iostream>
+#include<fstream>
 using namespace std;
 
 //TODO not console constructors
@@ -22,6 +23,7 @@ public:
     int get_salary_value();
     worker();
     virtual void show();
+    virtual void to_file(ofstream& save);
     virtual ~worker();
 };
 
@@ -32,7 +34,9 @@ protected:
     void set_office_nuber_console();
 public:
     void show_office_number();
+    int get_office_number_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     leader();
     virtual ~leader();
 };
@@ -44,7 +48,9 @@ protected:
     void set_car_console();
 public:
     void show_car();
+    string get_car_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     director();
     virtual ~director();
 };
@@ -56,7 +62,9 @@ protected:
     void set_team_id_console();
 public:
     void show_team_id();
+    int get_team_id_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     manager();
     virtual ~manager();
 };
@@ -68,7 +76,9 @@ protected:
     void set_experiance_console();
 public:
     virtual void show_experiance();
+    int get_experiance_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     casual();
     virtual ~casual();
 };
@@ -80,7 +90,9 @@ protected:
     void set_region_id_console();
 public:
     void show_region_id();
+    int get_region_id_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     salesman();
     virtual ~salesman();
 };
@@ -92,7 +104,9 @@ protected:
     void set_box_id_console();
 public:
     void show_box_id();
+    int get_box_id_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     office_worker();
     virtual ~office_worker();
 };
@@ -104,7 +118,9 @@ protected:
     void set_tool_console();
 public:
     void show_tool();
+    string get_tool_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     maintenance_worker();
     virtual ~maintenance_worker();
 };
@@ -116,7 +132,9 @@ protected:
     void set_acces_level_console();
 public:
     void show_acces_level();
+    int get_acces_level_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     accountant();
     virtual ~accountant();
 
@@ -129,7 +147,9 @@ protected:
     void set_computer_console();
 public:
     void show_computer();
+    string get_computer_value();
     virtual void show();
+    virtual void to_file(ofstream& save);
     IT_guy();
     virtual ~IT_guy();
 };

@@ -9,6 +9,6 @@ do - implemented and working
 cd - implemented and working
 show - implemented and working
 read - not implemented
-save - not implemented
-dir - not implemented
-tree - not implemented
+save - implemented and working
+dir - implemented and working
+tree - implemented and working

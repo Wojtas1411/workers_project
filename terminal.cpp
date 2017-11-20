@@ -99,19 +99,19 @@ void working_tree::add_element(string param) {
         s = nullptr;
         delete s;
     }
-    if(param == "Director"){
+    if(param == "Director" || (param.empty() && name == "Director")){
         current_item->p = new director();
     }
-    else if(param == "Manager"){
+    else if(param == "Manager" || (param.empty() && name == "Manager")){
         current_item->p = new manager();
     }
-    else if(param == "Salesman"){
+    else if(param == "Salesman" || (param.empty() && name == "Salesman")){
         current_item->p = new salesman();
     }
-    else if(param == "Accountant"){
+    else if(param == "Accountant" || (param.empty() && name == "Accountant")){
         current_item->p = new accountant();
     }
-    else if(param == "ITguy"){
+    else if(param == "ITguy" || (param.empty() && name == "ITguy")){
         current_item->p = new IT_guy();
     }
     else{
@@ -213,6 +213,10 @@ int working_tree::num_of_elements() {
         delete s;
         return count;
     }
+}
+
+item *working_tree::get_p() {
+    return p;
 }
 
 working_tree::working_tree(string name) {
@@ -373,7 +377,7 @@ void terminal::tree() {
 
 void terminal::save(string filename) {
     //TODO
-    if(filename == ""){
+    if(filename.empty()){
         filename = "default_save.txt";
     }
     if(filename.find(".txt") == -1){
@@ -384,7 +388,13 @@ void terminal::save(string filename) {
     for(int i=0;i<10;i++){
         if(tab[i]->is_leaf()){
             save<<tab[i]->get_name()<<" "<<tab[i]->num_of_elements()<<endl;
-
+            if(tab[i]->get_p() != nullptr){
+                item *s = tab[i]->get_p();
+                while(s!= nullptr){
+                    s->p->to_file(save);
+                    s=s->next;
+                }
+            }
         }
     }
     save.close();

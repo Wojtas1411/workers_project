@@ -43,6 +43,7 @@ public:
     string get_name();
     working_tree *get_child(int i);
     working_tree *get_parent(int i);
+    item *get_p();
 
     working_tree(string name);
     ~working_tree();
