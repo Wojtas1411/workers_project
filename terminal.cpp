@@ -518,6 +518,7 @@ void terminal::main_loop() {
         }
         else if(command == "mo"){
             current->add_element(parameter);
+            string t; getline(cin,t);//czyszczenie bufora
         }
         else if(command == "do"){
             current->del_element(parameter);
@@ -555,7 +556,7 @@ terminal::terminal() {
     for(int i=0;i<10;i++){
         tab[i] = new working_tree(names[i]);
     }
-    current = tab[3];
+    current = tab[0];
     tab[0]->set_children(tab[1],tab[2], nullptr);
     tab[1]->set_parent(tab[0], nullptr);
     tab[1]->set_children(tab[3], tab[4], nullptr);

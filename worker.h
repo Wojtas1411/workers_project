@@ -4,8 +4,6 @@
 #include<fstream>
 using namespace std;
 
-//TODO not console constructors
-
 class worker {
 private:
     string name;

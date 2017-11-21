@@ -55,7 +55,6 @@ public:
 class terminal {
 private:
     string names[10] = {"Worker", "Leader", "Casual", "Director", "Manager", "Salesman", "Office", "Maintenance", "Accountant", "ITguy"};
-    //string command_list[9] = {"cd", "mo", "do", "mdo", "dir", "show", "save", "read", "tree"};
     bool seen[10] = {false};
     working_tree *current;
     working_tree *tab[10];

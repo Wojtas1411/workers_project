@@ -8,7 +8,7 @@ mo - implemented and working
 do - implemented and working
 cd - implemented and working
 show - implemented and working
-read - not implemented
+read - implemented and working
 save - implemented and working
 dir - implemented and working
 tree - implemented and working
