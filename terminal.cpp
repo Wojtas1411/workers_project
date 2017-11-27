@@ -33,8 +33,6 @@ void working_tree::to_item(string name) {
     else if(s->next == nullptr && s!= nullptr && s->p->get_name_value()==name){
         current_item = s;
         czy = true;
-        //cout<<"one"<<endl;
-        //cout<<current_item->p->get_name_value()<<endl;
     }
     else{
         while(s->next!= nullptr){
@@ -42,8 +40,6 @@ void working_tree::to_item(string name) {
             if(s->p->get_name_value() == name){
                 current_item = s;
                 czy = true;
-                //cout<<"two"<<endl;
-                //cout<<current_item->next->p->get_name_value()<<endl;
                 break;
             }
             s=s->next;
@@ -80,13 +76,11 @@ void working_tree::add_element(string param) {
     if(p == nullptr){
         p = new item;
         current_item = p;
-        //cout<<"one"<<endl;
     }
     else if(p!= nullptr && p->next == nullptr){
         p->next = new item;
         current_item = p->next;
         current_item->prev = p;
-        //cout<<"two"<<endl;
     }
     else{
         item *s = p;
@@ -101,30 +95,37 @@ void working_tree::add_element(string param) {
     }
     if(param == "Director" || (param.empty() && name == "Director")){
         current_item->p = new director();
+        string t; getline(cin,t);//czyszczenie bufora
     }
     else if(param == "Manager" || (param.empty() && name == "Manager")){
         current_item->p = new manager();
+        string t; getline(cin,t);//czyszczenie bufora
     }
     else if(param == "Salesman" || (param.empty() && name == "Salesman")){
         current_item->p = new salesman();
+        string t; getline(cin,t);//czyszczenie bufora
     }
     else if(param == "Accountant" || (param.empty() && name == "Accountant")){
         current_item->p = new accountant();
+        string t; getline(cin,t);//czyszczenie bufora
     }
     else if(param == "ITguy" || (param.empty() && name == "ITguy")){
         current_item->p = new IT_guy();
+        string t; getline(cin,t);//czyszczenie bufora
     }
     else{
-        cout<<"Invalid parameter";
+        cout<<"Invalid parameter"<<endl;
+        if(!is_leaf()){
+            cout<<"This is not a leaf!"<<endl;
+        }
     }
     cout<<"Making finished"<<endl;
+
 }
 void working_tree::del_element(string param) {
     to_item(param);
     if(current_item== nullptr)cout<<"fatal error"<<endl;
-    cout<<"xd"<<endl;
     delete current_item->p;
-    cout<<"xd"<<endl;
     item *s= nullptr;
     if(current_item->next != nullptr){
         s = current_item->next;
@@ -137,14 +138,11 @@ void working_tree::del_element(string param) {
     if(current_item->prev == nullptr){
         p = current_item->next;
     }
-    cout<<"xd"<<endl;
     current_item->next = nullptr;
     current_item->prev = nullptr;
     delete current_item;
-    cout<<"xd"<<endl;
     s = nullptr;
     delete s;
-    cout<<"xd"<<endl;
 }
 void working_tree::mod_element(string param) {
     to_item(param);
@@ -152,18 +150,23 @@ void working_tree::mod_element(string param) {
         delete current_item->p;
         if(name == "Director"){
             current_item->p = new director();
+            string t; getline(cin,t);//czyszczenie bufora
         }
         else if(name == "Manager"){
             current_item->p = new manager();
+            string t; getline(cin,t);//czyszczenie bufora
         }
         else if(name == "Salesman"){
             current_item->p = new salesman();
+            string t; getline(cin,t);//czyszczenie bufora
         }
         else if(name == "Accountant"){
             current_item->p = new accountant();
+            string t; getline(cin,t);//czyszczenie bufora
         }
         else if(name == "ITguy"){
             current_item->p = new IT_guy();
+            string t; getline(cin,t);//czyszczenie bufora
         }
         else{
             cout<<"Invalid parameter";
@@ -192,7 +195,6 @@ void working_tree::show_list(int depth) {
         }
         s = nullptr;
         delete s;
-
     }
     else{
         for(int i=0;i<depth;i++)cout<<"  ";
@@ -219,13 +221,11 @@ void working_tree::add_element2(ifstream &read, string param) {
     if(p == nullptr){
         p = new item;
         current_item = p;
-        //cout<<"one"<<endl;
     }
     else if(p!= nullptr && p->next == nullptr){
         p->next = new item;
         current_item = p->next;
         current_item->prev = p;
-        //cout<<"two"<<endl;
     }
     else{
         item *s = p;
@@ -256,7 +256,6 @@ void working_tree::add_element2(ifstream &read, string param) {
     else{
         cout<<"Invalid parameter";
     }
-    //cout<<"Making finished"<<endl;
 }
 void working_tree::del_all_elements() {
     item *s = p;
@@ -269,7 +268,6 @@ void working_tree::del_all_elements() {
     s = nullptr;
     delete s;
     p = nullptr;
-    //if(p != nullptr)cout<<"Something went terribly wrong here!"<<endl;
 }
 
 item *working_tree::get_p() {
@@ -297,7 +295,6 @@ working_tree::~working_tree() {
     p = nullptr;
     while (s!= nullptr && s->next!= nullptr){
         s = s->next;
-        //cout<<"Deleting "<<s->prev->p->get_name_value()<<endl;
         delete s->prev->p;
         delete s->prev->prev;
         current_item = nullptr;
@@ -316,10 +313,6 @@ working_tree::~working_tree() {
         delete p;
     }
     cout<<"step5"<<endl;
-    /*if(current_item!= nullptr){
-        delete current_item->p;
-        delete current_item;
-    }*/
     delete current_item;
     delete p;
     cout<<"done"<<endl;
@@ -385,7 +378,6 @@ void terminal::dir_rec(working_tree *tmp) {
                 break;
             }
         }
-
     }
     else{
         for(int i=0;i<3;i++){
@@ -484,7 +476,6 @@ void terminal::read(string filename) {
             for(int i=0;i<10;i++){
                 if(tab[i]->get_name()==tmp){
                     if(tab[i]->get_p() != nullptr){
-                        //cout<<"p is not empty"<<endl;
                         tab[i]->del_all_elements();
                     }
                     for(int j=0;j<a;j++){
@@ -518,7 +509,6 @@ void terminal::main_loop() {
         }
         else if(command == "mo"){
             current->add_element(parameter);
-            string t; getline(cin,t);//czyszczenie bufora
         }
         else if(command == "do"){
             current->del_element(parameter);
@@ -541,9 +531,6 @@ void terminal::main_loop() {
         else if(command == "tree"){
             tree();
         }
-        else if(command == "showL"){
-            current->show_list(0);
-        }
         else{
             cout<<"Invalid command"<<endl;
         }
@@ -553,6 +540,7 @@ void terminal::main_loop() {
 }
 
 terminal::terminal() {
+    //creating tree of elements and setting relations between them
     for(int i=0;i<10;i++){
         tab[i] = new working_tree(names[i]);
     }

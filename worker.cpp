@@ -25,18 +25,14 @@ void worker::set_name_console() {
     getline(cin,x);
     name = x;
 }
-void worker::set_name_value(std::string tmp) {
-    name = tmp;
-}
+
 void worker::set_salary_console() {
     cout<<"Enter Salary: ";
     int a;
     cin>>a;
     salary = a;
 }
-void worker::set_salary_value(int tmp) {
-    salary = tmp;
-}
+
 worker::worker() {
     set_name_console();
     set_salary_console();

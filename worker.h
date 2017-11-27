@@ -9,20 +9,18 @@ private:
     string name;
     int salary;
 protected:
-    void set_name_console();
-    void set_name_value(std:: string tmp);
+    void set_name_console();//standard setters
     void set_salary_console();
-    void set_salary_value(int tmp);
 
 public:
-    virtual void get_name_console();
-    string get_name_value();
+    virtual void get_name_console(); //standard getter to console
+    string get_name_value(); //returns name value
     virtual void get_salary_console();
     int get_salary_value();
-    worker();
-    worker(ifstream& read);
-    virtual void show();
-    virtual void to_file(ofstream& save);
+    worker(); //standard console constructor
+    worker(ifstream& read); //file constructor
+    virtual void show(); //shows all class variables
+    virtual void to_file(ofstream& save); //saves to file all class variables
     virtual ~worker();
 };
 
