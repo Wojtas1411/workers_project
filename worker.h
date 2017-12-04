@@ -9,10 +9,14 @@ private:
     string name;
     int salary;
 protected:
+    int A;
     void set_name_console();//standard setters
     void set_salary_console();
+    void set_A_console();
 
 public:
+    void show_A();
+    int get_A();
     virtual void get_name_console(); //standard getter to console
     string get_name_value(); //returns name value
     virtual void get_salary_console();
@@ -28,8 +32,13 @@ class leader: public worker {
 private:
     int office_number;
 protected:
+    int B;
     void set_office_nuber_console();
+    void set_B_console();
+
 public:
+    void show_B();
+    int get_B();
     void show_office_number();
     int get_office_number_value();
     virtual void show();
@@ -43,8 +52,12 @@ class director: public leader {
 private:
     string car;
 protected:
+    int D;
     void set_car_console();
+    void set_D_console();
 public:
+    void show_D();
+    int get_D();
     void show_car();
     string get_car_value();
     virtual void show();
@@ -58,8 +71,12 @@ class manager: public leader {
 private:
     int team_id;
 protected:
+    int E;
     void set_team_id_console();
+    void set_E_console();
 public:
+    void show_E();
+    int get_E();
     void show_team_id();
     int get_team_id_value();
     virtual void show();
@@ -73,8 +90,12 @@ class casual: public worker {
 private:
     int experiance;
 protected:
+    int C;
     void set_experiance_console();
+    void set_C_console();
 public:
+    void show_C();
+    int get_C();
     virtual void show_experiance();
     int get_experiance_value();
     virtual void show();
@@ -88,8 +109,12 @@ class salesman: public casual {
 private:
     int region_id;
 protected:
+    int F;
     void set_region_id_console();
+    void set_F_console();
 public:
+    void show_F();
+    int get_F();
     void show_region_id();
     int get_region_id_value();
     virtual void show();
@@ -103,8 +128,12 @@ class office_worker: virtual public casual {
 private:
     int box_id;
 protected:
+    int G;
     void set_box_id_console();
+    void set_G_console();
 public:
+    void show_G();
+    int get_G();
     void show_box_id();
     int get_box_id_value();
     virtual void show();
@@ -118,8 +147,12 @@ class maintenance_worker: virtual public casual {
 private:
     string tool;
 protected:
+    int H;
     void set_tool_console();
+    void set_H_console();
 public:
+    void show_H();
+    int get_H();
     void show_tool();
     string get_tool_value();
     virtual void show();
@@ -133,8 +166,12 @@ class accountant: virtual public office_worker {
 private:
     int acces_level;
 protected:
+    int I;
+    void set_I_console();
     void set_acces_level_console();
 public:
+    void show_I();
+    int get_I();
     void show_acces_level();
     int get_acces_level_value();
     virtual void show();
@@ -149,10 +186,14 @@ class IT_guy: public office_worker, virtual public maintenance_worker {
 private:
     string computer;
 protected:
+    int J;
     void set_computer_console();
+    void set_J_console();
 public:
     void show_computer();
     string get_computer_value();
+    void show_J();
+    int get_J();
     virtual void show();
     virtual void to_file(ofstream& save);
     IT_guy();

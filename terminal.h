@@ -67,7 +67,6 @@ private:
 protected:
     void joy_mark(); //shows "znak zachety"
     void main_loop(); //runs main loop - console
-    void change_directory(string tmp); //changes pointer current on child or parent of current element
     void super_change_directory(string tmp); //changes pointer current for any alament in system
     void dir(); //executes function dir_rec for current element
     void tree(); //executes function tree_rec for with depth parameter set

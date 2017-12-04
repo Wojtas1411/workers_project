@@ -148,6 +148,7 @@ void working_tree::mod_element(string param) {
     to_item(param);
     if(current_item != nullptr){
         delete current_item->p;
+        current_item->p = nullptr;
         if(name == "Director"){
             current_item->p = new director();
             string t; getline(cin,t);//czyszczenie bufora
@@ -200,6 +201,7 @@ void working_tree::show_list(int depth) {
         for(int i=0;i<depth;i++)cout<<"  ";
         cout<<"Is not a leaf or empty"<<endl;
     }
+    //cout<<"DONE"<<endl;
 }
 
 int working_tree::num_of_elements() {
@@ -280,17 +282,14 @@ working_tree::working_tree(string name) {
 
 working_tree::~working_tree() {
     current_item = nullptr;
-    cout<<"step1"<<endl;
     for(int i=0;i<2;i++){
         parent[i]= nullptr;
         delete parent[i];
     }
-    cout<<"sted2"<<endl;
     for(int i=0;i<3;i++){
         q[i] = nullptr;
         delete q[i];
     }
-    cout<<"step3"<<endl;
     item *s = p;
     p = nullptr;
     while (s!= nullptr && s->next!= nullptr){
@@ -305,47 +304,20 @@ working_tree::~working_tree() {
         s= nullptr;
     }
     delete s;
-    cout<<"step4"<<endl;
     if(p!= nullptr){
         delete p->p;
         if(p->next!= nullptr)delete p->next;
         if(p->prev!= nullptr)delete p->prev;
         delete p;
     }
-    cout<<"step5"<<endl;
     delete current_item;
     delete p;
-    cout<<"done"<<endl;
 }
 
 ///--------Terminal--------///
 
 void terminal::joy_mark() {
     cout<<">> "<<current->get_name()<<" :";
-}
-void terminal::change_directory(string tmp) {
-    bool tester = false;
-
-    for(int i=0;i<2;i++){
-        if(current->get_parent(i) != nullptr && current->get_parent(i)->get_name() == tmp){
-            current = current->get_parent(i);
-            tester = true;
-        }
-    }
-
-    if(!tester){
-        for(int i=0;i<3;i++){
-            if(current->get_child(i) != nullptr && current->get_child(i)->get_name() == tmp){
-                current = current->get_child(i);
-                tester = true;
-                break;
-            }
-        }
-    }
-
-    if(!tester){
-        cout<<"Directory is not accesible"<<endl;
-    }
 }
 
 void terminal::super_change_directory(string tmp) {
@@ -502,9 +474,6 @@ void terminal::main_loop() {
             break;
         }
         else if(command == "cd"){
-            change_directory(parameter);
-        }
-        else if(command == "xd"){
             super_change_directory(parameter);
         }
         else if(command == "mo"){
@@ -566,7 +535,6 @@ terminal::terminal() {
 }
 terminal::~terminal() {
     for(int i=0;i<10;i++){
-        cout<<"Deleting "<<tab[i]->get_name()<<endl;
         delete tab[i];
     }
     current = NULL;
