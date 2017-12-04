@@ -60,6 +60,15 @@ void worker::show_A() {
 int worker::get_A() {
     return A;
 }
+void worker::modify() {
+    cout<<"Error"<<endl;
+}
+void worker::set_name(string tmp) {
+    name = tmp;
+}
+void worker::set_salary(int x) {
+    salary = x;
+}
 ///-------Class Leader-------///
 
 void leader::set_office_nuber_console() {
@@ -101,6 +110,13 @@ void leader::show_B() {
 int leader::get_B() {
     return B;
 }
+void leader::modify() {
+    cout<<"Error"<<endl;
+}
+void leader::set_office_number(int x) {
+    office_number = x;
+}
+
 ///-------Class Director-------///
 void director::set_car_console() {
     cout<<"Enter car name: ";
@@ -154,6 +170,32 @@ void director::show_D() {
 }
 int director::get_D() {
     return D;
+}
+void director::modify() {
+    string tmp="";
+    cout<<"Starting modification - to change parameter type new value, otherwise press Enter"<<endl;
+    get_name_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_name(tmp);tmp="";
+    get_salary_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_salary(atoi(tmp.c_str()));tmp="";
+    show_office_number();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_office_number(atoi(tmp.c_str()));tmp="";
+    show_car();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())car = tmp;tmp="";
+    show_A();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())A = atoi(tmp.c_str());tmp="";
+    show_B();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())B = atoi(tmp.c_str());tmp="";
+    show_D();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())D = atoi(tmp.c_str());tmp="";
+
 }
 ///-------Class Manager-------///
 
@@ -210,6 +252,31 @@ void manager::show_E() {
 int manager::get_E() {
     return E;
 }
+void manager::modify() {
+    string tmp="";
+    cout<<"Starting modification - to change parameter type new value, otherwise press Enter"<<endl;
+    get_name_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_name(tmp);tmp="";
+    get_salary_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_salary(atoi(tmp.c_str()));tmp="";
+    show_office_number();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_office_number(atoi(tmp.c_str()));tmp="";
+    show_team_id();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())team_id = atoi(tmp.c_str());tmp="";
+    show_A();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())A = atoi(tmp.c_str());tmp="";
+    show_B();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())B = atoi(tmp.c_str());tmp="";
+    show_E();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())E = atoi(tmp.c_str());tmp="";
+}
 ///-------Class Casual-------///
 
 void casual::set_experiance_console() {
@@ -249,6 +316,12 @@ void casual::show_C() {
 }
 int casual::get_C() {
     return C;
+}
+void casual::modify() {
+    cout<<"Error"<<endl;
+}
+void casual::set_experiance(int x) {
+    experiance = x;
 }
 
 ///-------Salesman-------///
@@ -306,6 +379,31 @@ void salesman::show_F() {
 int salesman::get_F() {
     return F;
 }
+void salesman::modify() {
+    string tmp="";
+    cout<<"Starting modification - to change parameter type new value, otherwise press Enter"<<endl;
+    get_name_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_name(tmp);tmp="";
+    get_salary_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_salary(atoi(tmp.c_str()));tmp="";
+    show_experiance();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_experiance(atoi(tmp.c_str()));tmp="";
+    show_region_id();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())region_id = atoi(tmp.c_str());tmp="";
+    show_A();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())A = atoi(tmp.c_str());tmp="";
+    show_C();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())C = atoi(tmp.c_str());tmp="";
+    show_F();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())F = atoi(tmp.c_str());tmp="";
+}
 
 ///-------Class Office Worker-------///
 
@@ -348,6 +446,13 @@ void office_worker::show_G() {
 int office_worker::get_G() {
     return G;
 }
+void office_worker::modify() {
+    cout<<"Error"<<endl;
+}
+void office_worker::set_box_id(int x) {
+    box_id = x;
+}
+
 ///-------Class Maintenance Worker-------///
 void maintenance_worker::set_tool_console() {
     cout<<"Enter tool: ";
@@ -387,6 +492,13 @@ void maintenance_worker::show_H() {
 int maintenance_worker::get_H() {
     return H;
 }
+void maintenance_worker::modify() {
+    cout<<"Error"<<endl;
+}
+void maintenance_worker::set_tool(string tmp) {
+    tool = tmp;
+}
+
 ///-------Class Accountant-------///
 
 void accountant::set_acces_level_console() {
@@ -446,6 +558,37 @@ void accountant::show_I() {
 }
 int accountant::get_I() {
     return I;
+}
+void accountant::modify() {
+    string tmp="";
+    cout<<"Starting modification - to change parameter type new value, otherwise press Enter"<<endl;
+    get_name_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_name(tmp);tmp="";
+    get_salary_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_salary(atoi(tmp.c_str()));tmp="";
+    show_experiance();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_experiance(atoi(tmp.c_str()));tmp="";
+    show_box_id();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_box_id(atoi(tmp.c_str()));tmp="";
+    show_acces_level();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())acces_level = atoi(tmp.c_str());tmp="";
+    show_A();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())A = atoi(tmp.c_str());tmp="";
+    show_C();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())C = atoi(tmp.c_str());tmp="";
+    show_G();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())G = atoi(tmp.c_str());tmp="";
+    show_I();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())I = atoi(tmp.c_str());tmp="";
 }
 
 ///-------IT GUY-------///
@@ -512,6 +655,43 @@ void IT_guy::show_J() {
 }
 int IT_guy::get_J() {
     return J;
+}
+void IT_guy::modify() {
+    string tmp="";
+    cout<<"Starting modification - to change parameter type new value, otherwise press Enter"<<endl;
+    get_name_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_name(tmp);tmp="";
+    get_salary_console();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_salary(atoi(tmp.c_str()));tmp="";
+    show_experiance();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_experiance(atoi(tmp.c_str()));tmp="";
+    show_box_id();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_box_id(atoi(tmp.c_str()));tmp="";
+    show_tool();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())set_tool(tmp);tmp="";
+    show_computer();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())computer = tmp;tmp="";
+    show_A();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())A = atoi(tmp.c_str());tmp="";
+    show_C();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())C = atoi(tmp.c_str());tmp="";
+    show_G();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())G = atoi(tmp.c_str());tmp="";
+    show_H();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())H = atoi(tmp.c_str());tmp="";
+    show_J();
+    cout<<"New value: ";
+    getline(cin,tmp);if(!tmp.empty())J = atoi(tmp.c_str());tmp="";
 }
 
 

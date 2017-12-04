@@ -147,36 +147,10 @@ void working_tree::del_element(string param) {
 void working_tree::mod_element(string param) {
     to_item(param);
     if(current_item != nullptr){
-        delete current_item->p;
-        current_item->p = nullptr;
-        if(name == "Director"){
-            current_item->p = new director();
-            string t; getline(cin,t);//czyszczenie bufora
-        }
-        else if(name == "Manager"){
-            current_item->p = new manager();
-            string t; getline(cin,t);//czyszczenie bufora
-        }
-        else if(name == "Salesman"){
-            current_item->p = new salesman();
-            string t; getline(cin,t);//czyszczenie bufora
-        }
-        else if(name == "Accountant"){
-            current_item->p = new accountant();
-            string t; getline(cin,t);//czyszczenie bufora
-        }
-        else if(name == "ITguy"){
-            current_item->p = new IT_guy();
-            string t; getline(cin,t);//czyszczenie bufora
-        }
-        else{
-            cout<<"Invalid parameter";
-        }
-        current_item = nullptr;
-
+        current_item->p->modify();
     }
     else{
-        cout<<"mdo fatal error"<<endl;
+        cout<<"MDO error - invalid parameter"<<endl;
     }
 }
 void working_tree::show_element(string param) {

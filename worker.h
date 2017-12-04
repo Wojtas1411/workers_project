@@ -11,7 +11,9 @@ private:
 protected:
     int A;
     void set_name_console();//standard setters
+    void set_name(string tmp);
     void set_salary_console();
+    void set_salary(int x);
     void set_A_console();
 
 public:
@@ -26,6 +28,7 @@ public:
     virtual void show(); //shows all class variables
     virtual void to_file(ofstream& save); //saves to file all class variables
     virtual ~worker();
+    virtual void modify();
 };
 
 class leader: public worker {
@@ -34,6 +37,7 @@ private:
 protected:
     int B;
     void set_office_nuber_console();
+    void set_office_number(int x);
     void set_B_console();
 
 public:
@@ -46,6 +50,7 @@ public:
     leader();
     leader(ifstream& read);
     virtual ~leader();
+    virtual void modify();
 };
 
 class director: public leader {
@@ -65,6 +70,7 @@ public:
     director();
     director(ifstream& read);
     virtual ~director();
+    virtual void modify();
 };
 
 class manager: public leader {
@@ -84,6 +90,7 @@ public:
     manager();
     manager(ifstream& read);
     virtual ~manager();
+    virtual void modify();
 };
 
 class casual: public worker {
@@ -93,6 +100,7 @@ protected:
     int C;
     void set_experiance_console();
     void set_C_console();
+    void set_experiance(int x);
 public:
     void show_C();
     int get_C();
@@ -103,6 +111,7 @@ public:
     casual();
     casual(ifstream& read);
     virtual ~casual();
+    virtual void modify();
 };
 
 class salesman: public casual {
@@ -122,6 +131,7 @@ public:
     salesman();
     salesman(ifstream& read);
     virtual ~salesman();
+    virtual void modify();
 };
 
 class office_worker: virtual public casual {
@@ -131,6 +141,7 @@ protected:
     int G;
     void set_box_id_console();
     void set_G_console();
+    void set_box_id(int x);
 public:
     void show_G();
     int get_G();
@@ -141,6 +152,7 @@ public:
     office_worker();
     office_worker(ifstream& read);
     virtual ~office_worker();
+    virtual void modify();
 };
 
 class maintenance_worker: virtual public casual {
@@ -150,6 +162,7 @@ protected:
     int H;
     void set_tool_console();
     void set_H_console();
+    void set_tool(string tmp);
 public:
     void show_H();
     int get_H();
@@ -160,6 +173,7 @@ public:
     maintenance_worker();
     maintenance_worker(ifstream& read);
     virtual ~maintenance_worker();
+    virtual void modify();
 };
 
 class accountant: virtual public office_worker {
@@ -179,6 +193,7 @@ public:
     accountant();
     accountant(ifstream& read);
     virtual ~accountant();
+    virtual void modify();
 
 };
 
@@ -199,6 +214,7 @@ public:
     IT_guy();
     IT_guy(ifstream& read);
     virtual ~IT_guy();
+    virtual void modify();
 };
 
 
